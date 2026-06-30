@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suwas Agro</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+header{
+background:#1B5E20;
+color:white;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h2{
+font-size:28px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+}
+
+.hero{
+height:400px;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url("https://images.unsplash.com/photo-1542838132-92c53300491e");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:45px;
+}
+
+.hero p{
+margin-top:10px;
+font-size:18px;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+background:#4CAF50;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+.products{
+padding:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+text-align:center;
+}
+
+.card h3{
+color:#2E7D32;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+margin:10px 0;
+}
+
+button{
+background:#2E7D32;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:20px;
+cursor:pointer;
+}
+
+footer{
+background:#1B5E20;
+color:white;
+padding:20px;
+text-align:center;
+margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Suwas Agro</h2>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Products</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Fresh Vegetables & Grocery</h1>
+
+<p>Farm Fresh Products Delivered To Your Doorstep</p>
+
+<a class="btn" href="#">Shop Now</a>
+
+</section>
+
+<section class="products">
