@@ -1,214 +1,157 @@
-▼ <!DOCTYPE html>
-<html lang="as">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> suwas agro - সতেজ পাচলি, ফল-মূল আৰু গ্ৰোচাৰী</title>
-    <!-- Premium Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kohinoor+Bangla:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <title>Suwas Agro - Premium Vegetables, Fruits & Grocery</title>
+    <!-- Google Fonts for Premium Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --primary: #1e4620;
-            --primary-light: #2d6a4f;
-            --accent: #e67e22;
-            --text-dark: #2c3e50;
-            --bg-light: #f9fbf9;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s ease;
+            --primary: #2e7d32;
+            --primary-light: #e8f5e9;
+            --dark: #1a1a1a;
+            --grey: #f4f4f4;
+            --accent: #ff9800;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Kohinoor Assamese', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: var(--dark);
         }
 
-        /* Header Navigation */
+        /* Header & Navbar */
         header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
         }
 
         .logo {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .logo i {
-            color: var(--accent);
+        .cart-icon {
+            position: relative;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--dark);
+            background: var(--primary-light);
+            padding: 10px;
+            border-radius: 50%;
+            transition: 0.3s;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--accent);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 10px;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary);
-        }
-
-        /* Hero Banner */
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(30, 70, 32, 0.8), rgba(30, 70, 32, 0.9)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1974') no-repeat center center/cover;
-            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 300px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            color: var(--white);
-            padding: 0 20px;
+            color: white;
+            padding: 20px;
         }
 
-        .hero-content h1 {
-            font-size: 42px;
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
             font-weight: 700;
-            margin-bottom: 15px;
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-weight: 300;
         }
 
-        .btn-main {
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
-        }
-
-        .btn-main:hover {
-            background-color: #d35400;
-            transform: translateY(-2px);
-        }
-
-        /* Store Section */
-        .main-container {
+        /* Main Container */
+        .container {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 40px;
+            font-size: 24px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 8px;
         }
 
         .section-title::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 60px;
             height: 3px;
-            background-color: var(--accent);
-            margin: 10px auto 0;
-        }
-
-        /* Tabs Filter */
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .tab-btn {
-            background: var(--white);
-            border: 1px solid #e0e0e0;
-            padding: 10px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
+            background: var(--primary);
         }
 
         /* Product Grid */
-        .product-grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
+            margin-bottom: 50px;
         }
 
         .product-card {
-            background-color: var(--white);
+            background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #f0f0f0;
-            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-        }
-
-        .product-tag {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 5px 12px;
-            font-size: 12px;
-            border-radius: 20px;
-            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
         .product-img {
             width: 100%;
-            height: 220px;
+            height: 180px;
             object-fit: cover;
         }
 
@@ -216,210 +159,373 @@
             padding: 20px;
         }
 
-        .product-title {
+        .product-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
             font-size: 18px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .product-price {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 16px;
             color: var(--primary);
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
-        .product-price span {
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-
-        .btn-order {
+        .add-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            background-color: #25d366;
-            color: var(--white);
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: var(--transition);
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-btn:hover {
+            background: #1b5e20;
+        }
+
+        /* Cart Sidebar Drawer */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
             width: 100%;
-            border: none;
+            max-width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            z-index: 101;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-cart {
+            font-size: 24px;
             cursor: pointer;
         }
 
-        .btn-order:hover {
-            background-color: #128c7e;
+        .cart-items-container {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
         }
 
-        /* Admin Add Product Section */
-        .admin-section {
-            background-color: #edf2f4;
-            padding: 60px 20px;
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f4f4f4;
         }
 
-        .admin-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
+        .cart-item-details h4 {
+            font-size: 14px;
             font-weight: 600;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+        .cart-item-details p {
+            font-size: 13px;
+            color: #666;
         }
 
-        .btn-submit {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
+        .remove-item {
+            color: red;
             cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background: #fafafa;
+        }
+
+        .total-price {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128c7e;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
         }
 
         footer {
-            background-color: var(--primary);
-            color: var(--white);
+            background: var(--dark);
+            color: white;
             text-align: center;
             padding: 20px;
+            margin-top: 50px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <div class="nav-container">
-            <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> Agro Premium</a>
-            <ul class="nav-links">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#store-section">Store</a></li>
-                <li><a href="#admin-section">Add Product</a></li>
-            </ul>
+        <div class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-leaf"></i> Suwas Agro
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-shopping-basket"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>প্ৰাকৃতিক আৰু সতেজ সামগ্ৰীৰ ভঁৰাল</h1>
-            <p>উন্নত মানদণ্ডৰ পাচলি, ফল-মূল আৰু গ্ৰোচাৰী পোনপটীয়াকৈ আপোনাৰ ঘৰলৈ।</p>
-            <a href="#store-section" class="btn-main"><i class="fa-solid fa-shopping-basket"></i> ক্ৰয় কৰক</a>
-        </div>
+        <h1>Freshness Delivered to Your Doorstep</h1>
+        <p>Premium Quality Vegetables, Fruits & Grocery</p>
     </section>
 
-    <main class="main-container" id="store-section">
-        <h2 class="section-title">আমাৰ শিতানসমূহ</h2>
+    <!-- Main Content -->
+    <div class="container">
         
-        <div class="category-tabs">
-            <button class="tab-btn active" onclick="filterCategory('all')">সকলো সামগ্ৰী</button>
-            <button class="tab-btn" onclick="filterCategory('vegetable')">Vegetables</button>
-            <button class="tab-btn" onclick="filterCategory('fruit')">Fruits</button>
-            <button class="tab-btn" onclick="filterCategory('grocery')">Grocery</button>
-        </div>
-
-        <div class="product-grid" id="productGrid">
-            <!-- Sample Items -->
-            <div class="product-card" data-category="vegetable">
-                <span class="product-tag">Vegetables</span>
-                <img src="https://images.unsplash.com/photo-1566385101042-1a010892d6c2?auto=format&fit=crop&q=80&w=500" class="product-img">
+        <!-- Vegetables Section -->
+        <h2 class="section-title">Fresh Vegetables</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=400&q=80" alt="Potato" class="product-img">
                 <div class="product-info">
-                    <h3 class="product-title">লোকেল আলু (Premium Potato)</h3>
-                    <div class="product-price">₹40 <span>/ 1 KG</span></div>
-                    <button class="btn-order" onclick="sendWhatsApp('লোকেল আলু (Premium Potato)', '₹40 / 1 KG')">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp অৰ্ডাৰ
+                    <span class="product-tag">Vegetable</span>
+                    <h3 class="product-name">Local Potato (আলু)</h3>
+                    <p class="product-price">₹40 / kg</p>
+                    <button class="add-btn" onclick="addToCart('Local Potato', 40)">
+                        <i class="fa-solid fa-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=400&q=80" alt="Tomato" class="product-img">
+                <div class="product-info">
+                    <span class="product-tag">Vegetable</span>
+                    <h3 class="product-name">Fresh Tomato ( বিলাহী)</h3>
+                    <p class="product-price">₹60 / kg</p>
+                    <button class="add-btn" onclick="addToCart('Fresh Tomato', 60)">
+                        <i class="fa-solid fa-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
         </div>
-    </main>
 
-    <section class="admin-section" id="admin-section">
-        <div class="admin-container">
-            <h2 style="text-align:center; margin-bottom:20px; color:var(--primary);">নতুন সামগ্ৰী যোগ কৰক</h2>
-            <form id="addProductForm">
-                <div class="form-group">
-                    <label>সামগ্ৰীৰ নাম</label>
-                    <input type="text" id="prodName" class="form-control" placeholder="যেনে: বন্ধাকবি" required>
+        <!-- Fruits Section -->
+        <h2 class="section-title">Premium Fruits</h2>
+        <div class="products-grid">
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=400&q=80" alt="Apple" class="product-img">
+                <div class="product-info">
+                    <span class="product-tag">Fruit</span>
+                    <h3 class="product-name">Fresh Apple (আপেল)</h3>
+                    <p class="product-price">₹180 / kg</p>
+                    <button class="add-btn" onclick="addToCart('Fresh Apple', 180)">
+                        <i class="fa-solid fa-plus"></i> Add to Cart
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label>শিতান (Category)</label>
-                    <select id="prodCategory" class="form-control" required>
-                        <option value="vegetable">Vegetables</option>
-                        <option value="fruit">Fruits</option>
-                        <option value="grocery">Grocery</option>
-                    </select>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=400&q=80" alt="Banana" class="product-img">
+                <div class="product-info">
+                    <span class="product-tag">Fruit</span>
+                    <h3 class="product-name">Malbhog Banana (কল)</h3>
+                    <p class="product-price">₹60 / Dozen</p>
+                    <button class="add-btn" onclick="addToCart('Malbhog Banana', 60)">
+                        <i class="fa-solid fa-plus"></i> Add to Cart
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label>মূল্য (যেনে: ₹60 / 1 KG)</label>
-                    <input type="text" id="prodPrice" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>ছবিৰ লিংক (Image URL - Optional)</label>
-                    <input type="url" id="prodImg" class="form-control">
-                </div>
-                <button type="submit" class="btn-submit">ৱেবছাইটত যোগ কৰক</button>
-            </form>
+            </div>
         </div>
-    </section>
 
+    </div>
+
+    <!-- Cart Drawer Sidebar -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Basket</h3>
+            <i class="fa-solid fa-xmark close-cart" onclick="toggleCart()"></i>
+        </div>
+        <div class="cart-items-container" id="cart-items">
+            <!-- Cart items will be loaded here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="total-price">
+                <span>Total:</span>
+                <span id="cart-total">₹0</span>
+            </div>
+            <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">
+                <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Agro Premium. All Rights Reserved.</p>
+        <p>&copy; 2026 Suwas Agro. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for Functionality -->
     <script>
-        const WHATSAPP_NUMBER = "9678412223";
+        let cart = [];
+        const whatsappNumber = "9678412223";
 
-        function sendWhatsApp(name, price) {
-            const msg = `নমস্কাৰ, মই Agro Premium ৰ পৰা অৰ্ডাৰ কৰিব খুজিছোঁ:\n\n🔹 সামগ্ৰী: ${name}\n🔹 মূল্য: ${price}`;
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('active');
+            document.getElementById('cart-overlay').classList.toggle('active');
         }
 
-        function filterCategory(cat) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            document.querySelectorAll('.product-card').forEach(c => {
-                c.style.display = (cat === 'all' || c.getAttribute('data-category') === cat) ? 'block' : 'none';
-            });
+        function addToCart(name, price) {
+            // Check if item already exists
+            const existingItem = cart.find(item => item.name === name);
+            if(existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCart();
         }
 
-        document.getElementById('addProductForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('prodName').value;
-            const cat = document.getElementById('prodCategory').value;
-            const price = document.getElementById('prodPrice').value;
-            let img = document.getElementById('prodImg').value || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=500';
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
 
-            const grid = document.getElementById('productGrid');
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.setAttribute('data-category', cat);
-            card.innerHTML = `<span class="product-tag">${cat}</span><img src="${img}" class="product-img"><div class="product-info"><h3 class="product-title">${name}</h3><div class="product-price">${price}</div><button class="btn-order" onclick="sendWhatsApp('${name}', '${price}')"><i class="fa-brands fa-whatsapp"></i> WhatsApp অৰ্ডাৰ</button></div>`;
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
             
-            grid.insertBefore(card, grid.firstChild);
-            document.getElementById('addProductForm').reset();
-            alert('যোগ কৰা হ’ল!');
-        });
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let totalItems = 0;
+
+            if(cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">Your basket is empty!</p>';
+            }
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                totalItems += item.quantity;
+
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>₹${item.price} x ${item.quantity}</p>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <strong>₹${item.price * item.quantity}</strong>
+                            <i class="fa-solid fa-trash remove-item" onclick="removeFromCart(${index})"></i>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartCount.innerText = totalItems;
+            cartTotal.innerText = '₹' + total;
+        }
+
+        function sendWhatsAppOrder() {
+            if(cart.length === 0) {
+                alert("Your cart is empty! Please add some products first.");
+                return;
+            }
+
+            let message = `*New Order From Suwas Agro*\n`;
+            message += `-----------------------------------------\n`;
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${index + 1}. *${item.name}* - Qty: ${item.quantity} (₹${itemTotal})\n`;
+            });
+
+            message += `-----------------------------------------\n`;
+            message += `*Grand Total: ₹${total}*\n\n`;
+            message += `Please confirm my order. Thank you!`;
+
+            // Encode text for URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
     </script>
 </body>
 </html>
