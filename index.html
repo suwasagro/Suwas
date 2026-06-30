@@ -1,327 +1,425 @@
-<!DOCTYPE html>
-<html lang="en">
+▼ <!DOCTYPE html>
+<html lang="as">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suwas Agro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> suwas agro - সতেজ পাচলি, ফল-মূল আৰু গ্ৰোচাৰী</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kohinoor+Bangla:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1e4620;
+            --primary-light: #2d6a4f;
+            --accent: #e67e22;
+            --text-dark: #2c3e50;
+            --bg-light: #f9fbf9;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Kohinoor Assamese', sans-serif;
+        }
 
-body{
-background:#f5f5f5;
-}
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-header{
-background:#1B5E20;
-color:white;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        /* Header Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-header h2{
-font-size:28px;
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-font-weight:bold;
-}
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.hero{
-height:400px;
-background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
-url("https://images.unsplash.com/photo-1542838132-92c53300491e");
-background-size:cover;
-background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-color:white;
-text-align:center;
-}
+        .logo i {
+            color: var(--accent);
+        }
 
-.hero h1{
-font-size:45px;
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
 
-.hero p{
-margin-top:10px;
-font-size:18px;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
 
-.btn{
-margin-top:20px;
-padding:12px 25px;
-background:#4CAF50;
-color:white;
-text-decoration:none;
-border-radius:30px;
-}
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
 
-.products{
-padding:40px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(30, 70, 32, 0.8), rgba(30, 70, 32, 0.9)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1974') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
 
-.card{
-background:white;
-border-radius:12px;
-padding:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.15);
-text-align:center;
-}
+        .hero-content h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
 
-.card h3{
-color:#2E7D32;
-}
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
 
-.price{
-font-size:22px;
-font-weight:bold;
-margin:10px 0;
-}
+        .btn-main {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+        }
 
-button{
-background:#2E7D32;
-color:white;
-border:none;
-padding:10px 20px;
-border-radius:20px;
-cursor:pointer;
-}
+        .btn-main:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
 
-footer{
-background:#1B5E20;
-color:white;
-padding:20px;
-text-align:center;
-margin-top:30px;
-}
-</style>
+        /* Store Section */
+        .main-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
 
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 10px auto 0;
+        }
+
+        /* Tabs Filter */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5px 12px;
+            font-size: 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .product-price span {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .btn-order {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25d366;
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-order:hover {
+            background-color: #128c7e;
+        }
+
+        /* Admin Add Product Section */
+        .admin-section {
+            background-color: #edf2f4;
+            padding: 60px 20px;
+        }
+
+        .admin-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<h2>Suwas Agro</h2>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> Agro Premium</a>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#store-section">Store</a></li>
+                <li><a href="#admin-section">Add Product</a></li>
+            </ul>
+        </div>
+    </header>
 
-<nav>
-<a href="#">Home</a>
-<a href="#">Products</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-</nav>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>প্ৰাকৃতিক আৰু সতেজ সামগ্ৰীৰ ভঁৰাল</h1>
+            <p>উন্নত মানদণ্ডৰ পাচলি, ফল-মূল আৰু গ্ৰোচাৰী পোনপটীয়াকৈ আপোনাৰ ঘৰলৈ।</p>
+            <a href="#store-section" class="btn-main"><i class="fa-solid fa-shopping-basket"></i> ক্ৰয় কৰক</a>
+        </div>
+    </section>
 
-</header>
+    <main class="main-container" id="store-section">
+        <h2 class="section-title">আমাৰ শিতানসমূহ</h2>
+        
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterCategory('all')">সকলো সামগ্ৰী</button>
+            <button class="tab-btn" onclick="filterCategory('vegetable')">Vegetables</button>
+            <button class="tab-btn" onclick="filterCategory('fruit')">Fruits</button>
+            <button class="tab-btn" onclick="filterCategory('grocery')">Grocery</button>
+        </div>
 
-<section class="hero">
-
-<h1>Fresh Vegetables & Grocery</h1>
-
-<p>Farm Fresh Products Delivered To Your Doorstep</p>
-
-<a class="btn" href="#">Shop Now</a>
-
-</section>
-
-<section class="products">
-  🥔 Potato      ₹13/Kg
-▼ Select Quantity
-
-🧅 Onion       ₹30/Kg
-▼ Select Quantity
-
-👤 Name
-📞 Mobile
-🏠 Address
-
-[ Place Order on WhatsApp ]
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <title>Everything delivered in 10 minutes | blinkit</title>
-    <link rel="icon" type="image/x-icon" href="https://images.moneycontrol.com/static-mcnews/2022/01/pjimage-29-770x433.jpg?impolicy=website&width=770&height=431">
-   <link rel="stylesheet"  href="./styles/product.css" />
-   <link rel="stylesheet" href="./styles/footer.css"  />
-   <link rel="stylesheet" href="./styles/index.css" />
-   <link
-   href="https://fonts.googleapis.com/icon?family=Material+Icons"
-   rel="stylesheet"
- />
- <script src="./scripts/index.js"  type="module"></script>
-
-</head>
-<body>
-
-      <!-- navbar div -->
-      <div id="NAVBAR"></div>
-
-<div id="sd-nav"></div>
-<div id="sd-color">
-
-    <div id="sd-container">
-    
-        <div id="sd-left">
-            <div id="sd-selected">
-                <a href="./grocery.html">Grocery & Staples</a>
-            </div>
-            <div>
-                <a href="./grocery/pulses.html"> Pulses</a>
-            </div>
-            <div>
-                <a href="./grocery/atta.html">Atta & Other flours</a>
-            </div>
-            <div>
-                <!-- <a>Fruits</a> -->
-                <a href="./grocery/rice.html">Rice & Other Grains</a>
-            </div>
-            <div>
-               
-                <a href="./grocery/dryfruits.html">Dry Fruits & Nuts</a>
-            </div>
-            <div>
-                <a href="./grocery/oil.html">Edible Oil</a>
-            </div>
-            <div>
-                <a href="./grocery/ghee.html"> Ghee & Vanaspati</a>
+        <div class="product-grid" id="productGrid">
+            <!-- Sample Items -->
+            <div class="product-card" data-category="vegetable">
+                <span class="product-tag">Vegetables</span>
+                <img src="https://images.unsplash.com/photo-1566385101042-1a010892d6c2?auto=format&fit=crop&q=80&w=500" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">লোকেল আলু (Premium Potato)</h3>
+                    <div class="product-price">₹40 <span>/ 1 KG</span></div>
+                    <button class="btn-order" onclick="sendWhatsApp('লোকেল আলু (Premium Potato)', '₹40 / 1 KG')">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp অৰ্ডাৰ
+                    </button>
+                </div>
             </div>
         </div>
-        <div id="sd-right">
-            <div id="sd-sort">
-              
-                <div>
-                    <div>
-                        <p>Home > Grocery & Staples</p>
-                   
-                   
-                       <b> Grocery & Staples</b>
-                    </div>
+    </main>
+
+    <section class="admin-section" id="admin-section">
+        <div class="admin-container">
+            <h2 style="text-align:center; margin-bottom:20px; color:var(--primary);">নতুন সামগ্ৰী যোগ কৰক</h2>
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label>সামগ্ৰীৰ নাম</label>
+                    <input type="text" id="prodName" class="form-control" placeholder="যেনে: বন্ধাকবি" required>
                 </div>
-                <div id="sd-selectDiv">
-                    <span>Sort by</span>
-                    <select name="" id="sd-select">
-                        <option value="">Relevance</option>
-                        <option value="low">Price(Low to High)</option>
-                        <option value="high">Price(High to Low)</option>
-                        <option value="dis">Discount(High to Low)</option>
-                        <option value="name">Name(A to Z)</option>
+                <div class="form-group">
+                    <label>শিতান (Category)</label>
+                    <select id="prodCategory" class="form-control" required>
+                        <option value="vegetable">Vegetables</option>
+                        <option value="fruit">Fruits</option>
+                        <option value="grocery">Grocery</option>
                     </select>
                 </div>
-            </div>
-            <div id="sd-showdata">
-
-            </div>
+                <div class="form-group">
+                    <label>মূল্য (যেনে: ₹60 / 1 KG)</label>
+                    <input type="text" id="prodPrice" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>ছবিৰ লিংক (Image URL - Optional)</label>
+                    <input type="url" id="prodImg" class="form-control">
+                </div>
+                <button type="submit" class="btn-submit">ৱেবছাইটত যোগ কৰক</button>
+            </form>
         </div>
+    </section>
 
+    <footer>
+        <p>&copy; 2026 Agro Premium. All Rights Reserved.</p>
+    </footer>
 
-    </div>
-    </div>
+    <script>
+        const WHATSAPP_NUMBER = "9678412223";
 
-     <!-- footer div -->
-     <div id="footer_display"></div>
-    
+        function sendWhatsApp(name, price) {
+            const msg = `নমস্কাৰ, মই Agro Premium ৰ পৰা অৰ্ডাৰ কৰিব খুজিছোঁ:\n\n🔹 সামগ্ৰী: ${name}\n🔹 মূল্য: ${price}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.querySelectorAll('.product-card').forEach(c => {
+                c.style.display = (cat === 'all' || c.getAttribute('data-category') === cat) ? 'block' : 'none';
+            });
+        }
+
+        document.getElementById('addProductForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('prodName').value;
+            const cat = document.getElementById('prodCategory').value;
+            const price = document.getElementById('prodPrice').value;
+            let img = document.getElementById('prodImg').value || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=500';
+
+            const grid = document.getElementById('productGrid');
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-category', cat);
+            card.innerHTML = `<span class="product-tag">${cat}</span><img src="${img}" class="product-img"><div class="product-info"><h3 class="product-title">${name}</h3><div class="product-price">${price}</div><button class="btn-order" onclick="sendWhatsApp('${name}', '${price}')"><i class="fa-brands fa-whatsapp"></i> WhatsApp অৰ্ডাৰ</button></div>`;
+            
+            grid.insertBefore(card, grid.firstChild);
+            document.getElementById('addProductForm').reset();
+            alert('যোগ কৰা হ’ল!');
+        });
+    </script>
 </body>
 </html>
-<script type="module">
-
-// adding navbar
-
-// import navbar from "./components/navbar.js";
-//   document.getElementById("NAVBAR").innerHTML = navbar();
-
-  // adding footer 
-import footer from './components/footer.js'
-    let display=document.querySelector("#footer_display");
-    display.innerHTML=footer();
-
-    //======
-
-    import  {changelocation,changelocation2} from "./components/navigation.js"
-    let sd_nav = document.getElementById("sd-nav");
-    sd_nav.innerHTML = changelocation()
-
-    let cart = JSON.parse(localStorage.getItem("cartdata")) || [];
-let showdata_div = document.getElementById("sd-showdata");
-
-import  {grocery} from "./scripts/data.js"
-import displaydata from "./scripts/showdata.js"
-
-let data = grocery()
-
-console.log(data)
-displaydata(data,showdata_div)
-
-
-
-let select_btn = document.getElementById("sd-select");
-
-select_btn.addEventListener("change",sortdata)
-
-
-function sortdata(){
-
-    let selected = select_btn.value;
-    console.log(selected)
-   
-        if(selected == "low"){
-        data.sort(function (a,b){
-            return Number(a.price)-Number(b.price);
-        });
-    }
-    if(selected == "high"){
-        data.sort(function (a,b){
-            return Number(b.price)-Number(a.price);
-        });
-    }
-    // if(selected == "name"){
-    //     data.sort(function(a,b){
-    //         return a.name - b.name;
-    //     })
-    // }
-
-    //=====
-    // var sel=document.querySelector("#sortName").value;
-    if(selected=="name"){
-        data.sort(function(a,b){
-     if(b.name.trim()>a.name.trim()){
-         return -1;
-     }
-    })
-    }
-    // if(sel=="ndsc"){
-    //     data.sort(function(a,b){
-    //  if(a.type>b.type){
-    //      return -1;
-    //  }
-    // })
-    // }
-
-
-    //====
-    else if(selected == ""){
-        data.sort(function (a,b){
-            return 0;
-        });
-    }
-    console.log(data)
- 
-    displaydata(data,showdata_div)
-    
-   
-
-    }
