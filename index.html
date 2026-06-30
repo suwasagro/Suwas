@@ -139,3 +139,78 @@ margin-top:30px;
 </section>
 
 <section class="products">
+  <div class="card">
+<h3>🥔 Potato (Alu)</h3>
+<p class="price">₹12 / Kg</p>
+
+<label>Select Quantity</label><br><br>
+
+<select id="potato">
+<option value="0">Not Required</option>
+<option value="0.5">0.5 Kg</option>
+<option value="1">1 Kg</option>
+<option value="2">2 Kg</option>
+<option value="5">5 Kg</option>
+</select>
+</div>
+
+<div class="card">
+<h3>🧅 Onion (Piyaj)</h3>
+<p class="price">₹30 / Kg</p>
+
+<label>Select Quantity</label><br><br>
+
+<select id="onion">
+<option value="0">Not Required</option>
+<option value="0.5">0.5 Kg</option>
+<option value="1">1 Kg</option>
+<option value="2">2 Kg</option>
+<option value="5">5 Kg</option>
+</select>
+</div>
+
+</section>
+
+<section style="padding:40px;background:#fff;">
+
+<h2>Customer Details</h2><br>
+
+<input type="text" id="name" placeholder="Full Name" style="width:100%;padding:12px;"><br><br>
+
+<input type="tel" id="phone" placeholder="Mobile Number" style="width:100%;padding:12px;"><br><br>
+
+<textarea id="address" placeholder="Delivery Address" style="width:100%;padding:12px;height:100px;"></textarea>
+
+<br><br>
+
+<button onclick="sendOrder()">🟢 Place Order on WhatsApp</button>
+
+</section>
+
+<script>
+
+function sendOrder(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+
+let potato=document.getElementById("potato").value;
+let onion=document.getElementById("onion").value;
+
+let msg=`🌿 *Suwas Agro*
+
+🛒 *New Order*
+
+👤 Name : ${name}
+📞 Phone : ${phone}
+📍 Address : ${address}
+
+🥔 Potato : ${potato} Kg
+🧅 Onion : ${onion} Kg`;
+
+window.open("https://wa.me/919678412223?text="+encodeURIComponent(msg));
+
+}
+
+</script>
