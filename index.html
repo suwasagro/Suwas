@@ -1,1110 +1,404 @@
-html_code = """<!DOCTYPE html>
-<html lang="as">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suwas Agro - Premium Fresh Marketplace</title>
-    <!-- Premium Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Assamese:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #02b153;
-            --primary-dark: #018a3f;
-            --primary-light: #e6f7ee;
-            --secondary: #ff9f43;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 25px -5px rgba(2, 177, 83, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', 'Noto Sans Assamese', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #f4f7f6;
-            color: var(--dark);
-        }
-
-        /* Premium Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 8%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--dark);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .cart-nav-btn {
-            background: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(2, 177, 83, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .cart-nav-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .cart-badge {
-            background: white;
-            color: var(--primary-dark);
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        /* Hero Banner */
-        .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
-            color: white;
-            padding: 100px 8%;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            color: #e2e8f0;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-        }
-
-        /* Main Workspace Grid */
-        .main-layout {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 4%;
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 40px;
-        }
-
-        @media (max-width: 1024px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Premium Combo Showcase Box */
-        .combo-container {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #fff 0%, #f0fff4 100%);
-            border: 2px dashed var(--primary);
-            border-radius: 24px;
-            padding: 30px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: var(--shadow);
-        }
-
-        @media (max-width: 768px) {
-            .combo-container {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-        }
-
-        .combo-details h2 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-
-        .combo-tag {
-            background: var(--secondary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .combo-items {
-            font-size: 1rem;
-            color: var(--gray);
-            margin-top: 10px;
-            line-height: 1.6;
-        }
-
-        .combo-price-zone {
-            text-align: right;
-        }
-
-        .combo-price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-        }
-
-        .btn-combo-add {
-            background: var(--dark);
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-combo-add:hover {
-            background: var(--primary);
-            box-shadow: 0 5px 15px rgba(2, 177, 83, 0.3);
-        }
-
-        /* Storefront Sections */
-        .category-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin: 40px 0 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .category-title::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 30px;
-            background: var(--primary);
-            border-radius: 3px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        /* Premium Card Layout */
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(2, 177, 83, 0.2);
-        }
-
-        .img-container {
-            width: 100%;
-            height: 180px;
-            background: #f1f5f9;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .img-container img {
-            transform: scale(1.1);
-        }
-
-        .price-badge {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            background: rgba(15, 23, 42, 0.85);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            backdrop-filter: blur(4px);
-        }
-
-        .card-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
-        }
-
-        .item-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-
-        /* Premium Counter Controls */
-        .qty-wrapper {
-            display: flex;
-            align-items: center;
-            background: var(--light);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 4px;
-            margin-bottom: 15px;
-        }
-
-        .qty-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            border: none;
-            background: white;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--dark);
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: all 0.2s;
-        }
-
-        .qty-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .qty-input {
-            flex-grow: 1;
-            width: 40px;
-            border: none;
-            background: transparent;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .btn-add {
-            background: var(--dark);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-        }
-
-        .btn-add:hover {
-            background: var(--primary);
-        }
-
-        /* Premium Sticky Cart and Checkout Panel */
-        .cart-sticky-sidebar {
-            position: sticky;
-            top: 90px;
-            max-height: calc(100vh - 120px);
-            overflow-y: auto;
-        }
-
-        .checkout-panel {
-            background: white;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            padding: 25px;
-        }
-
-        .panel-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .cart-items-container {
-            max-height: 200px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-        }
-
-        .cart-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--light);
-        }
-
-        .cart-row-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-row-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .cart-row-subtext {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        .btn-remove-item {
-            background: none;
-            border: none;
-            color: #ef4444;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        /* Pricing Calculations */
-        .summary-box {
-            background: var(--light);
-            padding: 15px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .free-delivery-alert {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-align: center;
-            padding: 6px;
-            border-radius: 8px;
-            margin-top: 5px;
-        }
-
-        .alert-active {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .alert-pending {
-            background: #ffedd5;
-            color: #9a3412;
-        }
-
-        /* Checkout Form */
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--gray);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.95rem;
-            background: var(--light);
-            transition: all 0.2s;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: white;
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 15px;
-            border-radius: 14px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s;
-        }
-
-        .btn-whatsapp:hover {
-            background: #20ba5a;
-            transform: translateY(-2px);
-        }
-
-        /* Toast Grid Popup */
-        #toast {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--dark);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 2000;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        #toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header Navigation -->
-    <nav class="navbar">
-        <div class="logo">Suwas<span>Agro</span></div>
-        <ul class="nav-links">
-            <li><a href="#veg-section">Vegetables</a></li>
-            <li><a href="#fruit-section">Fruits</a></li>
-            <li><a href="#grocery-section">Grocery</a></li>
-        </ul>
-        <button class="cart-nav-btn">
-            🛒 Cart <span class="cart-badge" id="nav-cart-badge">0</span>
-        </button>
-    </nav>
-
-    <!-- Hero space -->
-    <header class="hero">
-        <h1>Suwas Agro Premium Fresh</h1>
-        <p>অৰ্গেনিক আৰু সতেজ সামগ্ৰী পোনে পোনে খেতিয়াৰৰ পৰা আপোনাৰ পাকঘৰলৈ। খৰতকীয়া ডেলিভাৰী আৰু সৰ্বোত্তম মানদণ্ড।</p>
-    </header>
-
-    <!-- Main Dynamic Interface Container -->
-    <main class="main-layout">
-        
-        <!-- Premium Combo Pack Section -->
-        <section class="combo-container">
-            <div class="combo-details">
-                <span class="combo-tag">Best Value Combo Pack</span>
-                <h2>মেগা ফ্যামিলি ফ্ৰেশ্ব কম্বো (Free Delivery)</h2>
-                <div class="combo-items">
-                    📦 আলু ২ কেজি + পিয়াজ ২ কেজি + কেঁচা জলকীয়া ২০০ গ্ৰাম + মচুৰ দাইল ২ কেজি + খাঁটি মিঠাতেল ২ লিটাৰ
+<img src="https://images.unsplash.com/photo-1550259114-ad7188f0a967?auto=format&fit=crop&q=80&w=400" alt="Cabbage">
+                            <span class="price-badge">â‚¹40 / kg</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="item-name">à¦¬à¦¾à¦¨à§à¦§à¦¾à¦•à¦¬à¦¿ (Cabbage)</div>
+                            <div class="qty-wrapper">
+                                <button class="qty-btn" onclick="changeQty('cabbage-qty', -1)">-</button>
+                                <input type="number" id="cabbage-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('cabbage-qty', 1)">+</button>
+                            </div>
+                            <button class="btn-add" onclick="addItemToCart('à¦¬à¦¾à¦¨à§à¦§à¦¾à¦•à¦¬à¦¿', 40, 'cabbage-qty')">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Cauliflower -->
+                    <div class="product-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1568584711271-6c929fb49b60?auto=format&fit=crop&q=80&w=400" alt="Cauliflower">
+                            <span class="price-badge">â‚¹50 / kg</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="item-name">à¦«à§à¦²à¦•à¦¬à¦¿ (Cauliflower)</div>
+                            <div class="qty-wrapper">
+                                <button class="qty-btn" onclick="changeQty('cauli-qty', -1)">-</button>
+                                <input type="number" id="cauli-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('cauli-qty', 1)">+</button>
+                            </div>
+                            <button class="btn-add" onclick="addItemToCart('à¦«à§à¦²à¦•à¦¬à¦¿', 50, 'cauli-qty')">Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="combo-price-zone">
-                <div class="combo-price">₹450</div>
-                <button class="btn-combo-add" onclick="addComboToCart()">Add Combo Pack</button>
-            </div>
-        </section>
 
-        <!-- Dynamic Store Products Column -->
-        <div class="products-space">
-            
-            <!-- SECTION 1: VEGETABLES -->
-            <div id="veg-section">
-                <h2 class="category-title">সতেজ পাচলি (Fresh Vegetables)</h2>
+            <!-- SECTION 2: FRUITS -->
+            <div id="fruit-section">
+                <h2 class="category-title">à¦ªà§à§°à¦¿à¦®à¦¿à§Ÿà¦¾à¦® à¦«à¦²-à¦®à§‚à¦² (Fresh Fruits)</h2>
                 <div class="products-grid">
-                    <!-- Potato -->
+                    <!-- Apple -->
                     <div class="product-card">
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&q=80&w=400" alt="Potato">
-                            <span class="price-badge">₹30 / kg</span>
+                            <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&q=80&w=400" alt="Apple">
+                            <span class="price-badge">â‚¹160 / kg</span>
                         </div>
                         <div class="card-body">
-                            <div class="item-name">আলু (Potato)</div>
+                            <div class="item-name">à¦†à¦ªà§‡à¦² (Apple)</div>
                             <div class="qty-wrapper">
-                                <button class="qty-btn" onclick="changeQty('potato-qty', -1)">-</button>
-                                <input type="number" id="potato-qty" class="qty-input" value="1" min="1">
-                                <button class="qty-btn" onclick="changeQty('potato-qty', 1)">+</button>
+                                <button class="qty-btn" onclick="changeQty('apple-qty', -1)">-</button>
+                                <input type="number" id="apple-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('apple-qty', 1)">+</button>
                             </div>
-                            <button class="btn-add" onclick="addItemToCart('আলু (Potato)', 30, 'potato-qty')">Add to Cart</button>
+                            <button class="btn-add" onclick="addItemToCart('à¦†à¦ªà§‡à¦² (Apple)', 160, 'apple-qty')">Add to Cart</button>
                         </div>
                     </div>
-                    <!-- Onion -->
+                    <!-- Orange -->
                     <div class="product-card">
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&q=80&w=400" alt="Onion">
-                            <span class="price-badge">₹45 / kg</span>
+                            <img src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&q=80&w=400" alt="Orange">
+                            <span class="price-badge">â‚¹100 / kg</span>
                         </div>
                         <div class="card-body">
-                            <div class="item-name">পিয়াজ (Onion)</div>
+                            <div class="item-name">à¦•à¦®à¦²à¦¾ (Orange)</div>
                             <div class="qty-wrapper">
-                                <button class="qty-btn" onclick="changeQty('onion-qty', -1)">-</button>
-                                <input type="number" id="onion-qty" class="qty-input" value="1" min="1">
-                                <button class="qty-btn" onclick="changeQty('onion-qty', 1)">+</button>
+                                <button class="qty-btn" onclick="changeQty('orange-qty', -1)">-</button>
+                                <input type="number" id="orange-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('orange-qty', 1)">+</button>
                             </div>
-                            <button class="btn-add" onclick="addItemToCart('পিয়াজ (Onion)', 45, 'onion-qty')">Add to Cart</button>
+                            <button class="btn-add" onclick="addItemToCart('à¦•à¦®à¦²à¦¾ (Orange)', 100, 'orange-qty')">Add to Cart</button>
                         </div>
                     </div>
-                    <!-- Ginger -->
+                    <!-- Banana -->
                     <div class="product-card">
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=400" alt="Ginger">
-                            <span class="price-badge">₹120 / kg</span>
+                            <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=400" alt="Banana">
+                            <span class="price-badge">â‚¹60 / doz</span>
                         </div>
                         <div class="card-body">
-                            <div class="item-name">আদা (Ginger)</div>
+                            <div class="item-name">à¦•à¦² (Banana)</div>
                             <div class="qty-wrapper">
-                                <button class="qty-btn" onclick="changeQty('ginger-qty', -1)">-</button>
-                                <input type="number" id="ginger-qty" class="qty-input" value="1" min="1">
-                                <button class="qty-btn" onclick="changeQty('ginger-qty', 1)">+</button>
+                                <button class="qty-btn" onclick="changeQty('banana-qty', -1)">-</button>
+                                <input type="number" id="banana-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('banana-qty', 1)">+</button>
                             </div>
-                            <button class="btn-add" onclick="addItemToCart('আদা (Ginger)', 120, 'ginger-qty')">Add to Cart</button>
+                            <button class="btn-add" onclick="addItemToCart('à¦•à¦² (Banana)', 60, 'banana-qty')">Add to Cart</button>
                         </div>
                     </div>
-                    <!-- Garlic -->
+                    <!-- Grapes -->
                     <div class="product-card">
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&q=80&w=400" alt="Garlic">
-                            <span class="price-badge">₹150 / kg</span>
+                            <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&q=80&w=400" alt="Grapes">
+                            <span class="price-badge">â‚¹140 / kg</span>
                         </div>
                         <div class="card-body">
-                            
-                                 <div class="item-name">নহৰু (Garlic)</div>
+                            <div class="item-name">à¦†à¦™à§à§° (Grapes)</div>
                             <div class="qty-wrapper">
-                                <button class="qty-btn" onclick="changeQty('garlic-qty', -1)">-</button>
-                                <input type="number" id="garlic-qty" class="qty-input" value="1" min="1">
-                                <button class="qty-btn" onclick="changeQty('garlic-qty', 1)">+</button>
+                                <button class="qty-btn" onclick="changeQty('grapes-qty', -1)">-</button>
+                                <input type="number" id="grapes-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('grapes-qty', 1)">+</button>
                             </div>
-                            <button class="btn-add" onclick="addItemToCart('নহৰু (Garlic)', 150, 'garlic-qty')">Add to Cart</button>
+                            <button class="btn-add" onclick="addItemToCart('à¦†à¦™uà§° (Grapes)', 140, 'grapes-qty')">Add to Cart</button>
                         </div>
                     </div>
-                    <!-- Beans -->
+                </div>
+            </div>
+
+            <!-- SECTION 3: GROCERY -->
+            <div id="grocery-section">
+                <h2 class="category-title">à¦ªà¦¾à¦•à¦˜à§°à§° à¦¸à¦¾à¦®à¦—à§à§°à§€ (Grocery Essentials)</h2>
+                <div class="products-grid">
+                    <!-- Masoor Dal -->
                     <div class="product-card">
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1567375691050-2d9f15a9ec08?auto=format&fit=crop&q=80&w=400" alt="Beans">
-                            <span class="price-badge">₹60 / kg</span>
+                            <img src="https://images.unsplash.com/photo-1545114065-224a2e5038c3?auto=format&fit=crop&q=80&w=400" alt="Masoor Dal">
+                            <span class="price-badge">â‚¹110 / kg</span>
                         </div>
                         <div class="card-body">
-                            <div class="item-name">লেচেৰা (Beans)</div>
-                            <div class="qty-wrapper">  
-
-                                Conversation with Gemini
-Kli hee apuni bonai disile tar aro kaita mn product add kribo lge vesitables ttt piyas, adha , kobi, nesera, tiyok , nehero, gajor
-
-Fruits ttt komola ,angur, amita etc
-
-Grosarry tt, matir dal , boot , mugr dal, seni , nimokh , rajmah,mithate
-
-Aro agr bostokaita aro etiya r kaita r bostor loge loge addcard kora agt quantity milabo para kri dibo
-
-Html create kri diyok 
-
-bhal kotha! Apuni jikhini notun bostu (veg, fruits, grocery) koise, hikhini moi agor listkhonor loge add kori disu.
-
-Logote, "Add to Cart" button-to click korar agote jate customer-e Quantity (poriman) to hosa-hosi koribo pare (+ ba - kori), tar babeo ekta niyamiyat dukanor nisina system bonai disu.
-
-Tolat dya HTML code-to apuni use koribo paribo:
-
-HTML
-<!DOCTYPE html>
-<html lang="as">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Dukan - Shopping Cart</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        h1, h2 {
-            text-align: center;
-            color: #2c3e50;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .category-section {
-            margin-bottom: 30px;
-        }
-        .category-title {
-            background-color: #27ae60;
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-        }
-        .product-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 6px;
-            text-align: center;
-            background: #fff;
-            transition: transform 0.2s;
-        }
-        .product-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .product-name {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-        /* Quantity Controls */
-        .quantity-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        .qty-btn {
-            background-color: #e0e0e0;
-            border: none;
-            padding: 5px 12px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        .qty-btn:hover {
-            background-color: #ccc;
-        }
-        .qty-input {
-            width: 40px;
-            text-align: center;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 3px;
-        }
-        /* Add to Cart Button */
-        .add-btn {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 0.95rem;
-        }
-        .add-btn:hover {
-            background-color: #219653;
-        }
-        /* Cart Summary Area */
-        .cart-summary {
-            margin-top: 30px;
-            border-top: 2px solid #2c3e50;
-            padding-top: 20px;
-        }
-        .cart-items-list {
-            list-style: none;
-            padding: 0;
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            background: #f9f9f9;
-            padding: 10px;
-            margin-bottom: 5px;
-            border-left: 5px solid #27ae60;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>আমাৰ অনলাইন দোকান</h1>
-    <p style="text-align:center;">আপোনাৰ প্ৰয়োজনীয় বস্তু বাচি লওক আৰু Quantity মিলাই Cart-ত যোগ কৰক।</p>
-    
-    <hr>
-
-    <!-- VEGETABLES SECTION -->
-    <div class="category-section">
-        <div class="category-title">পাচলি (Vegetables)</div>
-        <div class="product-grid">
-            <!-- New items added -->
-            <div class="product-card">
-                <div class="product-name">পিয়াজ (Onion)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('onion', -1)">-</button>
-                    <input type="number" id="onion" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('onion', 1)">+</button>
+                            <div class="item-name">à¦®à¦šà§à§° à¦¦à¦¾à¦‡à¦² (Masoor Dal)</div>
+                            <div class="qty-wrapper">
+                                <button class="qty-btn" onclick="changeQty('masoor-qty', -1)">-</button>
+                                <input type="number" id="masoor-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('masoor-qty', 1)">+</button>
+                            </div>
+                            <button class="btn-add" onclick="addItemToCart('à¦®à¦šà§à§° à¦¦à¦¾à¦‡à¦²', 110, 'masoor-qty')">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Moong Dal -->
+                    <div class="product-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&q=80&w=400" alt="Moong Dal">
+                            <span class="price-badge">â‚¹130 / kg</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="item-name">à¦®à§à¦— à¦¦à¦¾à¦‡à¦² (Moong Dal)</div>
+                            <div class="qty-wrapper">
+                                <button class="qty-btn" onclick="changeQty('moong-qty', -1)">-</button>
+                                <input type="number" id="moong-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('moong-qty', 1)">+</button>
+                            </div>
+                            <button class="btn-add" onclick="addItemToCart('à¦®à§à¦— à¦¦à¦¾à¦‡à¦²', 130, 'moong-qty')">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Mati Dal -->
+                    <div class="product-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80&w=400" alt="Mati Dal">
+                            <span class="price-badge">â‚¹140 / kg</span>
+                        </div>
+                        <div> class="card-body">
+                            <div> class="item-name">à¦®à¦¾à¦Ÿà¦¿à§° à¦¦à¦¾à¦‡à¦² (Urad Dal)</div>
+                            <div> class="qty-wrapper">
+                                <button class="qty-btn" onclick="changeQty('mati-qty', -1)">-</button>
+                                <input type="number" id="mati-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('mati-qty', 1)">+</button>
+                            </div>
+                            <button class="btn-add" onclick="addItemToCart('à¦®à¦¾à¦Ÿà¦¿à§° à¦¦à¦¾à¦‡à¦²', 140, 'mati-qty')">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Mustard Oil -->
+                    <div class="product-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&q=80&w=400" alt="Mustard Oil">
+                            <span class="price-badge">â‚¹170 / L</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="item-name">à¦®à¦¿à¦ à¦¾ à¦¤à§‡à¦² (Mustard Oil)</div>
+                            <div class="qty-wrapper">
+                                <button class="qty-btn" onclick="changeQty('oil-qty', -1)">-</button>
+                                <input type="number" id="oil-qty" class="qty-input" value="1" min="1">
+                                <button class="qty-btn" onclick="changeQty('oil-qty', 1)">+</button>
+                            </div>
+                            <button class="btn-add" onclick="addItemToCart('à¦®à¦¿à¦ à¦¾ à¦¤à§‡à¦²', 170, 'oil-qty')">Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
-                <button class="add-btn" onclick="addToCart('পিয়াজ (Onion)', 'onion')">Add to Cart</button>
             </div>
+        </div>
 
-            <div class="product-card">
-                <div class="product-name">আদা (Ginger)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('ginger', -1)">-</button>
-                    <input type="number" id="ginger" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('ginger', 1)">+</button>
+        <!-- Sticky Sidebar checkout summary -->
+        <aside class="cart-sticky-sidebar">
+            <div class="checkout-panel">
+                <div class="panel-title">
+                    <span>Shopping Cart</span>
+                    <span id="items-count">0 Items</span>
                 </div>
-                <button class="add-btn" onclick="addToCart('আদা (Ginger)', 'ginger')">Add to Cart</button>
-            </div>
+                
+                <!-- Items list -->
+                <div class="cart-items-container" id="cart-list-render">
+                    <p style="text-align:center; color:var(--gray); padding-top:20px;" id="empty-notice">Your cart is empty.</p>
+                </div>
 
-            <div class="product-card">
-                <div class="product-name">কবি (Cabbage/Cauliflower)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('cabbage', -1)">-</button>
-                    <input type="number" id="cabbage" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('cabbage', 1)">+</button>
+                <!-- Financial Calculation Summary Box -->
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span>à¦¬à§à¦¸à§à¦¤à§à§° à¦¦à¦¾à¦® (Subtotal):</span>
+                        <span id="subtotal-val">â‚¹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>à¦¡à§‡à¦²à¦¿à¦­à¦¾à§°à§€ à¦®à¦¾à¦šà§à¦² (Delivery):</span>
+                        <span id="delivery-val">â‚¹0</span>
+                    </div>
+                    <hr style="border:none; border-top:1px solid var(--border); margin:10px 0;">
+                    <div class="summary-row" style="font-weight:800; font-size:1.1rem; color:var(--dark);">
+                        <span>à¦¸à§°à§à¦¬à¦®à§à¦  (Total Cost):</span>
+                        <span id="total-val">â‚¹0</span>
+                    </div>
+                    <div id="delivery-alert" class="free-delivery-alert alert-pending">
+                        â‚¹499 à§° à¦“à¦ªà§°à§° à¦…à§°à§à¦¡à¦¾à§°à¦¤ Delivery à¦«à§à§°à§€!
+                    </div>
                 </div>
-                <button class="add-btn" onclick="addToCart('কবি (Cabbage)', 'cabbage')">Add to Cart</button>
-            </div>
 
-            <div class="product-card">
-                <div class="product-name">নেচেরা / লেচেৰা (Beans)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('beans', -1)">-</button>
-                    <input type="number" id="beans" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('beans', 1)">+</button>
+                <!-- Shipping details form -->
+                <h3 style="margin-bottom:15px; font-size:1.1rem;">à¦—à§à§°à¦¾à¦¹à¦•à§° à¦¸à¦¬à¦¿à¦¶à§‡à¦· à¦¤à¦¥à§à¦¯ (Customer Details)</h3>
+                <div class="form-group">
+                    <label>à¦†à¦ªà§‹à¦¨à¦¾à§° à¦¨à¦¾à¦® (Full Name)*</label>
+                    <input type="text" id="cust-name" class="form-control" placeholder="Enter your name" required>
                 </div>
-                <button class="add-btn" onclick="addToCart('নেচেরা (Beans)', 'beans')">Add to Cart</button>
-            </div>
+                <div class="form-group">
+                    <label>à¦ à¦¿à¦•à¦¨à¦¾ (Delivery Address)*</label>
+                    <textarea id="cust-address" class="form-control" rows="2" placeholder="Village/Town, Ward, Landmark..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>à¦«à§‹à¦¨ à¦¨à¦®à§à¦¬à§° (Phone Number)*</label>
+                    <input type="tel" id="cust-phone" class="form-control" placeholder="10-digit mobile number" required>
+                </div>
 
-            <div class="product-card">
-                <div class="product-name">তিয়ঁহ (Cucumber)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('cucumber', -1)">-</button>
-                    <input type="number" id="cucumber" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('cucumber', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('তিয়ঁহ (Cucumber)', 'cucumber')">Add to Cart</button>
+                <button class="btn-whatsapp" onclick="processWhatsAppCheckout()">
+                    ðŸ’¬ WhatsApp à¦¯à§‹à¦—à§‡ à¦…à§°à§à¦¡à¦¾à§° à¦•à§°à¦•
+                </button>
             </div>
+        </aside>
 
-            <div class="product-card">
-                <div class="product-name">নহৰু (Garlic)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('garlic', -1)">-</button>
-                    <input type="number" id="garlic" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('garlic', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('নহৰু (Garlic)', 'garlic')">Add to Cart</button>
-            </div>
+    </main>
 
-            <div class="product-card">
-                <div class="product-name">গাজৰ (Carrot)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('carrot', -1)">-</button>
-                    <input type="number" id="carrot" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('carrot', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('গাজৰ (Carrot)', 'carrot')">Add to Cart</button>
-            </div>
+    <!-- Success Toast component -->
+    <div id="toast">Item added to dynamic cart!</div>
 
-            <!-- Agor purona bostu -->
-            <div class="product-card">
-                <div class="product-name">আলু (Potato)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('potato', -1)">-</button>
-                    <input type="number" id="potato" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('potato', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('আলু (Potato)', 'potato')">Add to Cart</button>
-            </div>
+    <script>
+        // Local Javascript structure holding checkout matrix state
+        let cartState = [];
+        let isComboAdded = false;
+
+        function changeQty(fieldId, change) {
+            const el = document.getElementById(fieldId);
+            let val = parseInt(el.value) || 1;
+            val += change;
+            if (val >= 1) el.value = val;
+        }
+
+        function triggerToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function addItemToCart(name, unitPrice, qtyFieldId) {
+            const qty = parseInt(document.getElementById(qtyFieldId).value) || 1;
             
-            <div class="product-card">
-                <div class="product-name">অমিতা (Papaya)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('papaya_veg', -1)">-</button>
-                    <input type="number" id="papaya_veg" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('papaya_veg', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('অমিতা (Papaya)', 'papaya_veg')">Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- FRUITS SECTION -->
-    <div class="category-section">
-        <div class="category-title">ফল-মূল (Fruits)</div>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-name">কমলা (Orange)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('orange', -1)">-</button>
-                    <input type="number" id="orange" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('orange', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('কমলা (Orange)', 'orange')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">আঙুৰ (Grapes)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('grapes', -1)">-</button>
-                    <input type="number" id="grapes" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('grapes', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('আঙুৰ (Grapes)', 'grapes')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">অমিতা (Ripe Papaya)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('papaya_fruit', -1)">-</button>
-                    <input type="number" id="papaya_fruit" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('papaya_fruit', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('অমিতা (Papaya)', 'papaya_fruit')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">আপেল (Apple)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('apple', -1)">-</button>
-                    <input type="number" id="apple" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('apple', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('আপেল (Apple)', 'apple')">Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- GROCERY SECTION -->
-    <div class="category-section">
-        <div class="category-title">গ্ৰোচাৰী (Grocery)</div>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-name">মাটিৰ দাইল (Black Gram Dal)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('matidal', -1)">-</button>
-                    <input type="number" id="matidal" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('matidal', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('মাটিৰ দাইল', 'matidal')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">বুট (Chickpeas)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('boot', -1)">-</button>
-                    <input type="number" id="boot" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('boot', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('বুট (Chickpeas)', 'boot')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">মুগ দাইল (Moong Dal)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('mugdal', -1)">-</button>
-                    <input type="number" id="mugdal" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('mugdal', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('মুগ দাইল', 'mugdal')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">চেনি (Sugar)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('seni', -1)">-</button>
-                    <input type="number" id="seni" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('seni', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('চেনি (Sugar)', 'seni')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">নিমখ (Salt)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('nimokh', -1)">-</button>
-                    <input type="number" id="nimokh" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('nimokh', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('নিমখ (Salt)', 'nimokh')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">ৰাজমাহ (Rajma)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('rajmah', -1)">-</button>
-                    <input type="number" id="rajmah" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('rajmah', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('ৰাজমাহ (Rajma)', 'rajmah')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-name">মিঠা তেল (Mustard Oil)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('mithatel', -1)">-</button>
-                    <input type="number" id="mithatel" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('mithatel', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('মিঠা তেল', 'mithatel')">Add to Cart</button>
-            </div>
-
-            <!-- Agor purona bostu -->
-            <div class="product-card">
-                <div class="product-name">চাউল (Rice)</div>
-                <div class="quantity-controls">
-                    <button class="qty-btn" onclick="changeQty('rice', -1)">-</button>
-                    <input type="number" id="rice" class="qty-input" value="1" min="1">
-                    <button class="qty-btn" onclick="changeQty('rice', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('চাউল (Rice)', 'rice')">Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- CART SUMMARY -->
-    <div class="cart-summary">
-        <h2>যোগ কৰা বস্তুৰ তালিকা (Cart Items)</h2>
-        <ul id="cart-list" class="cart-items-list">
-            <p style="color:#777; text-align:center;" id="empty-msg">এতিয়ালৈকে কোনো বস্তু Add কৰা হোৱা নাই।</p>
-        </ul>
-    </div>
-</div>
-
-<script>
-    // Quantity scaling function (+ / - button work)
-    function changeQty(inputId, change) {
-        var input = document.getElementById(inputId);
-        var currentVal = parseInt(input.value);
-        var newVal = currentVal + change;
-        
-        // Quantity 1 otkoi kom hbo nwaribo
-        if (newVal >= 1) {
-            input.value = newVal;
-        }
-    }
-
-    // Function to add item into Cart list
-    function addToCart(productName, inputId) {
-        var qty = document.getElementById(inputId).value;
-        var cartList = document.getElementById('cart-list');
-        var emptyMsg = document.getElementById('empty-msg');
-        
-        // Hide "Empty" message if visible
-        if (emptyMsg) {
-            emptyMsg.style.display = 'none';
+            // Check if item already exists inside shopping list array
+            const existingIndex = cartState.findIndex(item => item.name === name);
+            if (existingIndex > -1) {
+                cartState[existingIndex].quantity += qty;
+            } else {
+                cartState.push({ name: name, price: unitPrice, quantity: qty, isCombo: false });
+            }
+            
+            triggerToast(name + " (" + qty + "à¦Ÿà¦¾/à¦•à§‡à¦œà¦¿) à¦•à¦¾à§°à§à¦Ÿà¦¤ à¦¯à§‹à¦— à¦•à§°à¦¾ à¦¹à§ˆà¦›à§‡!");
+            recalculateCart();
         }
 
-        // Create new list item dynamically
-        var li = document.createElement('li');
-        li.className = 'cart-item';
-        li.innerHTML = '<span><strong>' + productName + '</strong></span> <span>পৰিমাণ: ' + qty + '</span>';
-        
-        cartList.appendChild(li);
+        function addComboToCart() {
+            if(isComboAdded) {
+                triggerToast("à¦•à¦®à§à¦¬à§‹ à¦ªà§à¦¯à¦¾à¦• à¦‡à¦¤à¦¿à¦®à¦§à§à¦¯à§‡ à¦•à¦¾à§°à§à¦Ÿà¦¤ à¦¯à§‹à¦— à¦•à§°à¦¾ à¦¹à§ˆà¦›à§‡!");
+                return;
+            }
+            cartState.push({
+                name: "ðŸ“¦ à¦®à§‡à¦—à¦¾ à¦«à§à¦¯à¦¾à¦®à¦¿à¦²à¦¿ à¦«à§à§°à§‡à¦¶à§à¦¬ à¦•à¦®à§à¦¬à§‹",
+                price: 450,
+                quantity: 1,
+                isCombo: true
+            });
+            isComboAdded = true;
+            triggerToast("à¦®à§‡à¦—à¦¾ à¦•à¦®à§à¦¬à§‹ à¦ªà§à¦¯à¦¾à¦• à¦¯à§‹à¦— à¦•à§°à¦¾ à¦¹'à¦²!");
+            recalculateCart();
+        }
 
-        // Alert message for user feedback
-        alert(productName + " (" + qty + "টা/কেজি) Cart-ত যোগ কৰা হ'ল!");
-    }
-</script>
+        function removeCartItem(index) {
+            if(cartState[index].isCombo) {
+                isComboAdded = false;
+            }
+            cartState.splice(index, 1);
+            recalculateCart();
+        }
 
+        function recalculateCart() {
+            const listContainer = document.getElementById('cart-list-render');
+            const emptyNotice = document.getElementById('empty-notice');
+            const navBadge = document.getElementById('nav-cart-badge');
+            const itemsCountLabel = document.getElementById('items-count');
+            
+            listContainer.innerHTML = "";
+            
+            if(cartState.length === 0) {
+                listContainer.appendChild(emptyNotice);
+                navBadge.innerText = "0";
+                itemsCountLabel.innerText = "0 Items";
+                document.getElementById('subtotal-val').innerText = "â‚¹0";
+                document.getElementById('delivery-val').innerText = "â‚¹0";
+                document.getElementById('total-val').innerText = "â‚¹0";
+                return;
+            }
+
+            let subtotal = 0;
+            let totalQtyCount = 0;
+
+            cartState.forEach((item, index) => {
+                subtotal += (item.price * item.quantity);
+                totalQtyCount += item.quantity;
+
+                const row = document.createElement('div');
+                row.className = 'cart-row';
+                row.innerHTML = `
+                    <div class="cart-row-details">
+                        <span class="cart-row-name">${item.name}</span>
+                        <span class="cart-row-subtext">${item.quantity} x â‚¹${item.price}</span>
+                    </div>
+                    <div>
+                        <span style="font-weight:700; margin-right:10px;">â‚¹${item.price * item.quantity}</span>
+                        <button class="btn-remove-item" onclick="removeCartItem(${index})">âœ•</button>
+                    </div>
+                `;
+                listContainer.appendChild(row);
+            });
+
+            navBadge.innerText = totalQtyCount;
+            itemsCountLabel.innerText = cartState.length + " Items";
+
+            // Delivery logic computation rule setup
+            let deliveryFee = 30;
+            const alertBox = document.getElementById('delivery-alert');
+
+            if(isComboAdded || subtotal >= 499) {
+                deliveryFee = 0;
+                alertBox.className = "free-delivery-alert alert-active";
+                alertBox.innerText = isComboAdded ? "ðŸŽ‰ à¦•à¦®à§à¦¬à§‹ à¦¥à¦•à¦¾ à¦¬à¦¾à¦¬à§‡ à¦¡à§‡à¦²à¦¿à¦­à¦¾à§°à§€ à¦¸à¦®à§à¦ªà§‚à§°à§à¦£ à¦«à§à§°à§€!" : "ðŸŽ‰ â‚¹499 à§° à¦“à¦ªà§°à§° à¦…à§°à§à¦¡à¦¾à§°! à¦¡à§‡à¦²à¦¿à¦­à¦¾à§°à§€ à¦«à§à§°à§€!";
+            } else {
+                deliveryFee = 30;
+                let balanceNeeded = 499 - subtotal;
+                alertBox.className = "free-delivery-alert alert-pending";
+                alertBox.innerText = "à¦†à§°à§ â‚¹" + balanceNeeded + " à§° à¦…à§°à§à¦¡à¦¾à§° à¦•à§°à¦¿à¦²à§‡ Delivery à¦«à§à§°à§€ à¦¹'à¦¬!";
+            }
+
+            document.getElementById('subtotal-val').innerText = "â‚¹" + subtotal;
+            document.getElementById('delivery-val').innerText = "â‚¹" + deliveryFee;
+            document.getElementById('total-val').innerText = "â‚¹" + (subtotal + deliveryFee);
+        }
+
+        function processWhatsAppCheckout() {
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+
+            if(cartState.length === 0) {
+                alert("à¦…à¦¨à§à¦—à§à§°à¦¹ à¦•à§°à¦¿ à¦ªà§à§°à¦¥à¦®à§‡ à¦•à¦¾à§°à§à¦Ÿà¦¤ à¦¬à¦¸à§à¦¤à§ à¦¯à§‹à¦— à¦•à§°à¦•!");
+                return;
+            }
+            if(!name || !address || !phone) {
+                alert("à¦…à¦¨à§à¦—à§à§°à¦¹ à¦•à§°à¦¿ à¦—à§à§°à¦¾à¦¹à¦•à§° à¦¸à¦¬à¦¿à¦¶à§‡à¦· à¦¤à¦¥à§à¦¯à¦–à¦¿à¦¨à¦¿ à¦¸à¦®à§à¦ªà§‚à§°à§à¦£à¦•à§ˆ à¦²à¦¿à¦–à¦•!");
+                return;
+            }
+
+            // Build structural dynamic textual string format for premium API redirection dispatch
+            let messageStr = "ðŸ›ï¸ *NOTUN ORDER - SUWAS AGRO*\\n\\n";
+            messageStr += "ðŸ‘¤ *Customer Details:*\\n";
+            messageStr += "â€¢ *Name:* " + name + "\\n";
+            messageStr += "â€¢ *Address:* " + address + "\\n";
+            messageStr += "â€¢ *Phone:* " + phone + "\\n\\n";
+            
+            messageStr += "ðŸ“¦ *Ordered Items List:*\\n";
+            let subtotal = 0;
+            cartState.forEach((item) => {
+                messageStr += "â€¢ " + item.name + " (" + item.quantity + "x) - â‚¹" + (item.price * item.quantity) + "\\n";
+                subtotal += (item.price * item.quantity);
+            });
+
+            let deliveryFee = 30;
+            if (isComboAdded || subtotal >= 499) {
+                deliveryFee = 0;
+            }
+
+            messageStr += "\\nðŸ’µ *Billing Details:*\\n";
+            messageStr += "â€¢ *Subtotal:* â‚¹" + subtotal + "\\n";
+            messageStr += "â€¢ *Delivery Charge:* â‚¹" + (deliveryFee === 0 ? "FREE" : deliveryFee) + "\\n";
+            messageStr += "â€¢ ðŸš¨ *Total Payable:* *â‚¹" + (subtotal + deliveryFee) + "*\\n\\n";
+            messageStr += "à¤•à¥ƒà¤ªà¤¯à¤¾ à¦®à§‹à§° à¦…à§°à§à¦¡à¦¾à§°à¦Ÿà§‹ à¦¨à¦¿à¦¶à§à¦šà¦¿à¦¤ à¦•à§°à¦•à¥¤ à¦§à¦¨à§à¦¯à¦¬à¦¾à¦¦!";
+
+            // Dynamic safe redirection link mapping to designated target phone handler
+            const whatsappNumber = "9678412223";
+            const encodedUrl = "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + encodeURIComponent(messageStr);
+            
+            // Execute seamless global tab open transition
+            window.open(encodedUrl, '_blank');
+        }
+    </script>
 </body>
-</html>
-Python
-import os
-
-# Define the highly interactive and premium e-commerce HTML code with Assamese/English mix
-html_content = """<!DOCTYPE html>
-<html lang="as">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Daily Bazaar - Online Shopping</title>
-    <!-- Google Fonts for premium typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Assamese:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #02b153;
-            --primary-dark: #018a3f;
-            --primary-light: #e6f7ee;
-            --secondary: #ff9f43;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px
-            
-                                
+                
