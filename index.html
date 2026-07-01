@@ -677,4 +677,39 @@
     </script>
 </body>
 </html>
-      
+
+      <select id="qty-potato">
+    <option value="0.25">250 Gram</option>
+    <option value="0.5">500 Gram</option>
+    <option value="1" selected>1 Kg</option>
+    <option value="2">2 Kg</option>
+    <option value="5">5 Kg</option>
+</select>
+
+<button class="add-btn"
+onclick="addToCart('Local Potato',40,document.getElementById('qty-potato').value)">
+<i class="fa-solid fa-plus"></i> Add to Cart
+</button>
+
+function addToCart(name, price, qty){
+
+    qty = Number(qty);
+
+    cart.push({
+        name:name,
+        price:price,
+        quantity:qty
+    });
+
+    updateCart();
+
+    toggleCart(true);
+₹${item.price} each
+
+}
+₹${item.price} × ${item.quantity} Kg
+<div class="form-group">
+<label>Mobile Number</label>
+<input type="tel" id="cust-phone" placeholder="9876543210">
+</div>
+
