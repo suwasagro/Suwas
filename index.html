@@ -649,5 +649,411 @@
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
             
             window.open(whatsappUrl, '_blank');
+            <!DOCTYPE html>
+<html lang="as">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Dukan - Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .category-section {
+            margin-bottom: 30px;
+        }
+        .category-title {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            background: #fff;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .product-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        /* Quantity Controls */
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .qty-btn {
+            background-color: #e0e0e0;
+            border: none;
+            padding: 5px 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .qty-btn:hover {
+            background-color: #ccc;
+        }
+        .qty-input {
+            width: 40px;
+            text-align: center;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 3px;
+        }
+        /* Add to Cart Button */
+        .add-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.95rem;
+        }
+        .add-btn:hover {
+            background-color: #219653;
+        }
+        /* Cart Summary Area */
+        .cart-summary {
+            margin-top: 30px;
+            border-top: 2px solid #2c3e50;
+            padding-top: 20px;
+        }
+        .cart-items-list {
+            list-style: none;
+            padding: 0;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-left: 5px solid #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>আমাৰ অনলাইন দোকান</h1>
+    <p style="text-align:center;">আপোনাৰ প্ৰয়োজনীয় বস্তু বাচি লওক আৰু Quantity মিলাই Cart-ত যোগ কৰক।</p>
+    
+    <hr>
+
+    <!-- VEGETABLES SECTION -->
+    <div class="category-section">
+        <div class="category-title">পাচলি (Vegetables)</div>
+        <div class="product-grid">
+            <!-- New items added -->
+            <div class="product-card">
+                <div class="product-name">পিয়াজ (Onion)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('onion', -1)">-</button>
+                    <input type="number" id="onion" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('onion', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('পিয়াজ (Onion)', 'onion')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">আদা (Ginger)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('ginger', -1)">-</button>
+                    <input type="number" id="ginger" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('ginger', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('আদা (Ginger)', 'ginger')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">কবি (Cabbage/Cauliflower)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('cabbage', -1)">-</button>
+                    <input type="number" id="cabbage" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('cabbage', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('কবি (Cabbage)', 'cabbage')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">নেচেরা / লেচেৰা (Beans)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('beans', -1)">-</button>
+                    <input type="number" id="beans" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('beans', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('নেচেরা (Beans)', 'beans')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">তিয়ঁহ (Cucumber)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('cucumber', -1)">-</button>
+                    <input type="number" id="cucumber" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('cucumber', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('তিয়ঁহ (Cucumber)', 'cucumber')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">নহৰু (Garlic)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('garlic', -1)">-</button>
+                    <input type="number" id="garlic" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('garlic', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('নহৰু (Garlic)', 'garlic')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">গাজৰ (Carrot)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('carrot', -1)">-</button>
+                    <input type="number" id="carrot" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('carrot', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('গাজৰ (Carrot)', 'carrot')">Add to Cart</button>
+            </div>
+
+            <!-- Agor purona bostu -->
+            <div class="product-card">
+                <div class="product-name">আলু (Potato)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('potato', -1)">-</button>
+                    <input type="number" id="potato" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('potato', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('আলু (Potato)', 'potato')">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-name">বঙাল অমিতা (Papaya)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('papaya_veg', -1)">-</button>
+                    <input type="number" id="papaya_veg" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('papaya_veg', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('বঙাল অমিতা (Papaya)', 'papaya_veg')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FRUITS SECTION -->
+    <div class="category-section">
+        <div class="category-title">ফল-মূল (Fruits)</div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-name">কমলা (Orange)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('orange', -1)">-</button>
+                    <input type="number" id="orange" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('orange', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('কমলা (Orange)', 'orange')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">আঙুৰ (Grapes)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('grapes', -1)">-</button>
+                    <input type="number" id="grapes" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('grapes', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('আঙুৰ (Grapes)', 'grapes')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">অমিতা (Ripe Papaya)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('papaya_fruit', -1)">-</button>
+                    <input type="number" id="papaya_fruit" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('papaya_fruit', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('অমিতা (Papaya)', 'papaya_fruit')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">আপেল (Apple)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('apple', -1)">-</button>
+                    <input type="number" id="apple" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('apple', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('আপেল (Apple)', 'apple')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GROCERY SECTION -->
+    <div class="category-section">
+        <div class="category-title">গ্ৰোচাৰী (Grocery)</div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-name">মাটিৰ দাইল (Black Gram Dal)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('matidal', -1)">-</button>
+                    <input type="number" id="matidal" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('matidal', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('মাটিৰ দাইল', 'matidal')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">বুট (Chickpeas)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('boot', -1)">-</button>
+                    <input type="number" id="boot" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('boot', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('বুট (Chickpeas)', 'boot')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">মুগ দাইল (Moong Dal)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('mugdal', -1)">-</button>
+                    <input type="number" id="mugdal" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('mugdal', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('মুগ দাইল', 'mugdal')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">চেনি (Sugar)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('seni', -1)">-</button>
+                    <input type="number" id="seni" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('seni', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('চেনি (Sugar)', 'seni')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">নিমখ (Salt)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('nimokh', -1)">-</button>
+                    <input type="number" id="nimokh" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('nimokh', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('নিমখ (Salt)', 'nimokh')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">ৰাজমাহ (Rajma)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('rajmah', -1)">-</button>
+                    <input type="number" id="rajmah" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('rajmah', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('ৰাজমাহ (Rajma)', 'rajmah')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">মিঠা তেল (Mustard Oil)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('mithatel', -1)">-</button>
+                    <input type="number" id="mithatel" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('mithatel', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('মিঠা তেল', 'mithatel')">Add to Cart</button>
+            </div>
+
+            <!-- Agor purona bostu -->
+            <div class="product-card">
+                <div class="product-name">চাউল (Rice)</div>
+                <div class="quantity-controls">
+                    <button class="qty-btn" onclick="changeQty('rice', -1)">-</button>
+                    <input type="number" id="rice" class="qty-input" value="1" min="1">
+                    <button class="qty-btn" onclick="changeQty('rice', 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('চাউল (Rice)', 'rice')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART SUMMARY -->
+    <div class="cart-summary">
+        <h2>যোগ কৰা বস্তুৰ তালিকা (Cart Items)</h2>
+        <ul id="cart-list" class="cart-items-list">
+            <p style="color:#777; text-align:center;" id="empty-msg">এতিয়ালৈকে কোনো বস্তু Add কৰা হোৱা নাই।</p>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Quantity scaling function (+ / - button work)
+    function changeQty(inputId, change) {
+        var input = document.getElementById(inputId);
+        var currentVal = parseInt(input.value);
+        var newVal = currentVal + change;
+        
+        // Quantity 1 otkoi kom hbo nwaribo
+        if (newVal >= 1) {
+            input.value = newVal;
+        }
+    }
+
+    // Function to add item into Cart list
+    function addToCart(productName, inputId) {
+        var qty = document.getElementById(inputId).value;
+        var cartList = document.getElementById('cart-list');
+        var emptyMsg = document.getElementById('empty-msg');
+        
+        // Hide "Empty" message if visible
+        if (emptyMsg) {
+            emptyMsg.style.display = 'none';
+        }
+
+        // Create new list item dynamically
+        var li = document.createElement('li');
+        li.className = 'cart-item';
+        li.innerHTML = '<span><strong>' + productName + '</strong></span> <span>পৰিমাণ: ' + qty + '</span>';
+        
+        cartList.appendChild(li);
+
+        // Alert message for user feedback
+        alert(productName + " (" + qty + "টা/কেজি) Cart-ত যোগ কৰা হ'ল!");
+    }
+</script>
+
+</body>
+</html>
         }
     
